@@ -50,7 +50,7 @@ router.post(
       }
       const onMatch = bcrypt.compare(password, findUser.password);
       if (!onMatch) {
-        return res.status(400).json({ message: "you mistake" });
+        return res.status(400).json({ message: "you had mistake" });
       }
       const token = jwt.sign({ userId: findUser.id }, process.env.SECRET, {
         expiresIn: "1h",
