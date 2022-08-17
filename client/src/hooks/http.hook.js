@@ -19,13 +19,13 @@ const useHttp = () => {
         });
         const data = await response.json();
         if (!response.ok) {
-          throw new Error(data.message || "response Something went wrong");
+          throw new Error("response Something went wrong");
         }
         setLoading(false);
         return data;
       } catch (error) {
         setLoading(false);
-        setError(error.message || "http hook Something went wrong");
+        setError("http hook Something went wrong");
         throw error;
       }
     },

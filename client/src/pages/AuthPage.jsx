@@ -16,7 +16,7 @@ const AuthPage = () => {
   useEffect(() => {
     message(error);
     clearError();
-  }, [error, message, clearError, loading]);
+  }, [error, message, clearError]);
 
   const registerHandler = async () => {
     try {

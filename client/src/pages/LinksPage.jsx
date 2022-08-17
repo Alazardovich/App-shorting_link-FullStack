@@ -8,6 +8,7 @@ const LinksPage = () => {
   const [links, setLinks] = useState([]);
   const { request, loading } = useHttp();
   const { token } = useContext(AuthContext);
+
   const fetchLinks = useCallback(async () => {
     try {
       const data = await request("/api/link", "GET", null, {
@@ -16,6 +17,7 @@ const LinksPage = () => {
       setLinks(data);
     } catch (error) {}
   }, [token, request]);
+
   useEffect(() => {
     fetchLinks();
   }, [fetchLinks]);
