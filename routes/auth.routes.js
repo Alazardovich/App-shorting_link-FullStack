@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const User = require("../models/User");
 const router = Router();
+
 router.post(
   "/register",
   [
@@ -24,7 +25,7 @@ router.post(
       const { email, password } = req.body;
       const candidate = await User.findOne({ email });
       if (candidate) {
-        res.status(404).json({ message: "This account exist" });
+        res.status(400).json({ message: "This account exist" });
       }
       const hashPassword = await bcrypt.hash(password, 12);
       const user = new User({ email, password: hashPassword });
@@ -48,7 +49,7 @@ router.post(
       if (!findUser) {
         return res.status(400).json({ message: "Account not found" });
       }
-      const onMatch = bcrypt.compare(password, findUser.password);
+      const onMatch = await bcrypt.compare(password, findUser.password);
       if (!onMatch) {
         return res.status(400).json({ message: "you had mistake" });
       }

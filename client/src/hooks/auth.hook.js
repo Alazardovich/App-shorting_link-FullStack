@@ -13,7 +13,7 @@ const useAuth = () => {
     setUserId(id);
     localStorage.setItem(
       localName,
-      JSON.stringify({ token: jwttoken, userId: id })
+      JSON.stringify({ userId: id, token: jwttoken })
     );
   }, []);
   const logout = useCallback(() => {
