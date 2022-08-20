@@ -19,7 +19,7 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({
           errors: errors.array(),
-          message: "Некорректный данные при регистрации",
+          message: "Not correct files",
         });
       }
       const { email, password } = req.body;
