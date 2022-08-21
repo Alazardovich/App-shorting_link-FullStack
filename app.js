@@ -19,8 +19,6 @@ app.use(
     changeOrigin: true,
   })
 );
-// app.listen(3000);
-
 if (process.env.NODE_ENV === "production") {
   app.use("/", express.static(path.join(__dirname, "client", "build")));
   app.get("*", (req, res) => {
