@@ -18,7 +18,7 @@ app.use("/t", require("./routes/redirect.routes"));
 app.use(
   "**",
   createProxyMiddleware({
-    target: "https://app-shorting-link-fullstack.netlify.app",
+    target: "http://localhost:3223",
     changeOrigin: true,
     secure: false,
   })
