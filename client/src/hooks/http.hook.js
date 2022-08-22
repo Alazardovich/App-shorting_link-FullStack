@@ -13,14 +13,11 @@ const useHttp = () => {
           body = JSON.stringify(body);
           headers["Content-Type"] = "application/json";
         }
-        const response = await fetch(
-          `https://app-shorting-link-fullstack.netlify.app${url}`,
-          {
-            method,
-            body,
-            headers,
-          }
-        );
+        const response = await fetch(`http://localhost:3223${url}`, {
+          method,
+          body,
+          headers,
+        });
         if (!response.ok) {
           throw new Error("response Something went wrong");
         }
