@@ -24,6 +24,7 @@ const LinksPage = () => {
   if (loading) {
     return <Loader />;
   }
+
   return <>{!loading && <LinksList links={links} />}</>;
 };
 

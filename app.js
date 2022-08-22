@@ -19,7 +19,6 @@ app.use(
   "**",
   createProxyMiddleware({
     target: "http://localhost:3223",
-    changeOrigin: true,
     secure: false,
   })
 );

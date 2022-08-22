@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const LinksList = ({ links }) => {
   if (!links.length) {
-    <h1 className="center"> You haven't refers</h1>;
+    return <h1 className="center"> You haven't refers</h1>;
   }
   return (
     <>
