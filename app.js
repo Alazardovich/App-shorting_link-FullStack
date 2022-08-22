@@ -2,12 +2,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+var cors = require("cors");
 require("dotenv").config();
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const app = express();
 const PORT = process.env.PORT || 3030;
-app.use(express.json({ extended: true }));
+const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/link", require("./routes/link.routes"));
@@ -17,6 +20,7 @@ app.use(
   createProxyMiddleware({
     target: "http://localhost:3223",
     changeOrigin: true,
+    secure: false,
   })
 );
 if (process.env.NODE_ENV === "production") {

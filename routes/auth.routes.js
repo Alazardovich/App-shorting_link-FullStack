@@ -46,6 +46,7 @@ router.post(
     try {
       const { email, password } = req.body;
       const findUser = await User.findOne({ email });
+
       if (!findUser) {
         return res.status(400).json({ message: "Account not found" });
       }
