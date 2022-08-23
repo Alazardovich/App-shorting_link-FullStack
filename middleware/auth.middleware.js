@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const config = require("config");
 module.exports = (req, res, next) => {
   if (req.method === "OPTIONS") {
     return next();
@@ -8,7 +9,7 @@ module.exports = (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "Does not exist authorization" });
     }
-    const decoder = jwt.verify(token, process.env.SECRET);
+    const decoder = jwt.verify(token, config.get("SECRET"));
     req.user = decoder;
     next();
   } catch (error) {

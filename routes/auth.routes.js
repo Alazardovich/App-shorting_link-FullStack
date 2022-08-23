@@ -2,6 +2,7 @@
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const config = require("config");
 
 const { body, validationResult } = require("express-validator");
 const User = require("../models/User");
@@ -54,7 +55,7 @@ router.post(
       if (!onMatch) {
         return res.status(400).json({ message: "you had mistake" });
       }
-      const token = jwt.sign({ userId: findUser.id }, process.env.SECRET, {
+      const token = jwt.sign({ userId: findUser.id }, config.get("SECRET"), {
         expiresIn: "1h",
       });
       res.status(200).json({ message: "move on", token, userId: findUser.id });

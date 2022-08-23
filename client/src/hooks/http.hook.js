@@ -7,7 +7,6 @@ const useHttp = () => {
   const request = useCallback(
     async (url, method = "GET", body = null, headers = {}) => {
       setLoading(true);
-
       try {
         if (body) {
           body = JSON.stringify(body);
@@ -18,10 +17,10 @@ const useHttp = () => {
           body,
           headers,
         });
+        const data = await response.json();
         if (!response.ok) {
           throw new Error("response Something went wrong");
         }
-        const data = await response.json();
 
         setLoading(false);
         return data;

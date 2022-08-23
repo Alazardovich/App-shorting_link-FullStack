@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from "react";
 import { Link } from "react-router-dom";
-const LinksList = ({ links }) => {
+const LinksList = ({ links, deleteHandler }) => {
   if (!links.length) {
     return <h1 className="center"> You haven't refers</h1>;
   }
@@ -30,10 +31,11 @@ const LinksList = ({ links }) => {
                   <td>
                     <Link to={`../detail/${link._id}`}>Uncover</Link>
                   </td>
-                  <td>
-                    <button className="center" onClick={() => {}}>
-                      Remove
-                    </button>
+                  <td
+                    className="center"
+                    onClick={() => deleteHandler(link.code)}
+                  >
+                    Remove
                   </td>
                 </tr>
               );
