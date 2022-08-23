@@ -18,7 +18,7 @@ app.use("/t", require("./routes/redirect.routes"));
 app.use(
   "**",
   createProxyMiddleware({
-    target: "http://localhost:3223",
+    target: process.env.BASE_URL,
     secure: false,
   })
 );
